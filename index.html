@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>8pen doodle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <div id="eightPen" style="max-width:260px;width:80%;"></div>
+    <input id="eightPenWord" value="hello">
+  </body>
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="/js/vendor/seedrandom.js"></script>
+  <script src="/js/doodlegit.js"></script>
+  <script type="text/javascript">
+    window.onload = function() {
+      var doodle = new DoodleAnimation('#eightPen')
+        .setWord('hello').play();
+      var wordInput = $('#eightPenWord');
+      function updateWord () {
+        doodle.setWord(wordInput.val()).play();
+        wordInput.val(doodle.word); // replace the word by the filtered one 
+      };
+      wordInput.on('keyup', function (e) {
+        if (e.keyCode == 13) updateWord();
+      });
+      wordInput.on('blur', updateWord);
+    }
+  </script>
+</html>
