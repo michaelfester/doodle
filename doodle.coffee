@@ -428,8 +428,8 @@ class WordDoodlePhysicsState
     #  - step the simulation until it ends
     #  - store successive positions in an array
     getPoints: () ->
-        # Reinit the random number generator to have consistent shapes
-        Math.seedrandom("8pen")
+        # Reinitialize the random number generator to have consistent shapes
+        Math.seedrandom('8pen')
         @reinitPhysics()
         # Simulate the 8pen while there is still a letter that has to be traced
         penPosArray = []

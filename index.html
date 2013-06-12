@@ -4,15 +4,57 @@
     <title>8pen doodle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+      html {
+        background: #ddd;
+      }
+      body {
+        font-family: 'Museo Slab';
+        font-size: 16px;
+      }
+      a, a:visited {
+        text-decoration: none;
+        color: #3c66ba;
+      }
+      #container {
+        margin: 40px auto;
+        max-width: 280px;
+      }
+      #eightPen {
+        border: 1px solid #bbb;
+        border-radius: 5px;
+        background: #fff;
+        box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        padding: 4px;
+      }
+      #eightPenWord {
+        margin: 10px 0px;
+        height: 28px;
+        width: 100%;
+        border: 1px solid #bbb;
+        border-radius: 5px;
+        font-family: 'Museo';
+        font-size: 20px;
+        font-weight: 300;
+        text-align: center;
+        background: #f8f8fb;
+        color: #3c66ba;
+        padding: 4px;
+      }
+      
+    </style>
   </head>
-
   <body>
-    <div id="eightPen" style="max-width:260px;width:80%;"></div>
-    <input id="eightPenWord" value="hello">
+    <div id="container">
+      <h1>The <a href="http://8pen.com">8pen</a> doodle</h1>
+      <p><a href="http://8pen.com/blog/doodle">Read more</a> about the 8pen doodle on the 8pen website</p>
+      <div id="eightPen"></div>
+      <input id="eightPenWord" value="hello">
+    </div>
   </body>
-  
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/vendor/d3.min.js"></script>
   <script src="/js/vendor/seedrandom.js"></script>
   <script src="/js/doodlegit.js"></script>
   <script type="text/javascript">
