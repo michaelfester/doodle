@@ -5,17 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style type="text/css">
-      html {
-        background: #fff;
+      body, html {
+        background: red;
+        margin: 0;
+        padding: 0;
+      }
+      #container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: purple;
       }
       #doodle {
-        background: #fff;
+        background: orange;
         margin: 0 auto;
       }
     </style>
   </head>
   <body>
-    <div id="doodle"></div>
+    <div id="container">
+      <div id="doodle"></div>
+    </div>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="https://d3js.org/d3.v3.min.js"></script>
@@ -23,9 +35,11 @@
   <script src="doodle.js"></script>
   <script type="text/javascript">
     const resize = function() {
-      var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-      var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-      var size = Math.min(width, height) - 100;
+      var width = document.getElementById('container').offsetWidth;
+      var height = document.getElementById('container').offsetHeight;
+      // var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      // var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+      var size = Math.min(width, height) - 10;
       document.getElementById('doodle').setAttribute("style","width:"+size+"px; height:"+size+"px");
     }
     window.onload = function() {
