@@ -31,22 +31,38 @@
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="https://d3js.org/d3.v3.min.js"></script>
-  <script src="vendor/seedrandom.js"></script>
+  <!-- <script src="vendor/seedrandom.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js">
+  </script>
   <script src="doodle.js"></script>
   <script type="text/javascript">
+    let doodle = {};
+    let words = ["hello", "wonderful", "great", "fantastic", "beautiful", "doing"];
+    let currentWordIndex = -1;
+    const rng = new Math.seedrandom(Date());
+
     const resize = function() {
       var width = document.getElementById('container').offsetWidth;
       var height = document.getElementById('container').offsetHeight;
-      // var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-      // var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
       var size = Math.min(width, height) - 10;
       document.getElementById('doodle').setAttribute("style","width:"+size+"px; height:"+size+"px");
     }
+    
     window.onload = function() {
       resize();
-      var doodle = new DoodleAnimation('#doodle')
+      doodle = new DoodleAnimation('#doodle')
         .setWord('hello').play();
     }
+    
+    window.onclick = function() {
+      let newWordIndex = Math.floor(rng() * words.length);
+      while (newWordIndex === currentWordIndex) {
+        newWordIndex = Math.floor(rng() * words.length);
+      }
+      currentWordIndex = newWordIndex;
+      doodle.setWord(words[currentWordIndex]).play();
+    }
+    
     window.onresize = function() {
       resize();
     }
