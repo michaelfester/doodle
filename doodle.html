@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>8pen Doodle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+      html {
+        background: #fff;
+      }
+      #doodle {
+        background: #fff;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="doodle"></div>
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="vendor/seedrandom.js"></script>
+  <script src="doodle.js"></script>
+  <script type="text/javascript">
+    const resize = function() {
+      var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+      var size = Math.min(width, height) - 100;
+      document.getElementById('doodle').setAttribute("style","width:"+size+"px; height:"+size+"px");
+    }
+    window.onload = function() {
+      resize();
+      var doodle = new DoodleAnimation('#doodle')
+        .setWord('hello').play();
+    }
+    window.onresize = function() {
+      resize();
+    }
+  </script>
+</html>
