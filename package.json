@@ -1,0 +1,23 @@
+{
+  "name": "doodle",
+  "version": "1.0.0",
+  "description": "A library for generating natural 8pen doodles.",
+  "main": "doodle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelfester/doodle.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michaelfester/doodle/issues"
+  },
+  "homepage": "https://github.com/michaelfester/doodle#readme",
+  "dependencies": {
+    "d3": "^6.3.1",
+    "jquery": "^3.5.1",
+    "seedrandom": "^3.0.5"
+  }
+}
