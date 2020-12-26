@@ -9,3 +9,9 @@ The content is as follows:
 - `doodle.js`: the compiled simulation code
 - `vendor/seedrandom.js`: a library to seed the random generator for consistent results
 - `index.html`: an example page containing an 8pen Doodle
+
+## Running
+
+```sh
+httpserver .
+```

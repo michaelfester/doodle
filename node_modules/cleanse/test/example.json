@@ -1,0 +1,22 @@
+{
+  "whois": "John Galt?",
+  "toString": "a Prometheus who changed his mind",
+  "hasOwnProperty": true,
+  "missing": true,
+  "location": null,
+  "employment": [
+    "20th Century Motor Company",
+    "Taggart Transcontinental"
+  ],
+  "education": [
+    {
+      "school": "Patrick Henry University",
+      "toString": "PHU",
+      "years": 4,
+      "majors": [
+        "physics",
+        "philosophy"
+      ]
+    }
+  ]
+}
