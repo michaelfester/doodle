@@ -49,8 +49,10 @@
     
     window.onload = function() {
       resize();
+      const urlParams = new URLSearchParams(window.location.search);
+      const word = urlParams.get('word') || "hello";
       doodle = new DoodleAnimation('#doodle')
-        .setWord('hello').play();
+        .setWord(word).play();
     }
     
     window.onclick = function() {
