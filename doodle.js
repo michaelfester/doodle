@@ -8,14 +8,14 @@
     var lastTime, vendor, vendors, _i, _len;
     lastTime = 0;
     vendors = ['webkit', 'moz'];
-    for (_i = 0, _len = vendors.length; _i < _len; _i++) {
-      vendor = vendors[_i];
-      window.requestAnimationFrame = window[vendor + 'RequestAnimationFrame'];
-      window.cancelAnimationFrame = window[vendor + 'CancelAnimationFrame'] || window[vendor + 'CancelRequestAnimationFrame'];
-      if (window.requestAnimationFrame) {
-        break;
-      }
-    }
+    // for (_i = 0, _len = vendors.length; _i < _len; _i++) {
+    //   vendor = vendors[_i];
+    //   window.requestAnimationFrame = window[vendor + 'RequestAnimationFrame'];
+    //   window.cancelAnimationFrame = window[vendor + 'CancelAnimationFrame'] || window[vendor + 'CancelRequestAnimationFrame'];
+    //   if (window.requestAnimationFrame) {
+    //     break;
+    //   }
+    // }
     if (!window.requestAnimationFrame) {
       window.requestAnimationFrame = function(callback, element) {
         var currTime, id, timeToCall;
