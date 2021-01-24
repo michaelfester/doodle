@@ -7,16 +7,16 @@
   (function() {
     var lastTime, vendor, vendors, _i, _len;
     lastTime = 0;
-    // vendors = ['webkit', 'moz'];
-    // for (_i = 0, _len = vendors.length; _i < _len; _i++) {
-    //   vendor = vendors[_i];
-    //   window.requestAnimationFrame = window[vendor + 'RequestAnimationFrame'];
-    //   window.cancelAnimationFrame = window[vendor + 'CancelAnimationFrame'] || window[vendor + 'CancelRequestAnimationFrame'];
-    //   if (window.requestAnimationFrame) {
-    //     break;
-    //   }
-    // }
-    // if (!window.requestAnimationFrame) {
+    vendors = ['webkit', 'moz'];
+    for (_i = 0, _len = vendors.length; _i < _len; _i++) {
+      vendor = vendors[_i];
+      window.requestAnimationFrame = window[vendor + 'RequestAnimationFrame'];
+      window.cancelAnimationFrame = window[vendor + 'CancelAnimationFrame'] || window[vendor + 'CancelRequestAnimationFrame'];
+      if (window.requestAnimationFrame) {
+        break;
+      }
+    }
+    if (!window.requestAnimationFrame) {
       window.requestAnimationFrame = function(callback, element) {
         var currTime, id, timeToCall;
         currTime = new Date().getTime();
@@ -27,12 +27,12 @@
         lastTime = currTime + timeToCall;
         return id;
       };
-    // }
-    // if (!window.cancelAnimationFrame) {
+    }
+    if (!window.cancelAnimationFrame) {
       return window.cancelAnimationFrame = function(id) {
         return clearTimeout(id);
       };
-    // }
+    }
   })();
 
   runAnimationLoop = function(render, data, maxFrameRate) {
