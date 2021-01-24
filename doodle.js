@@ -7,7 +7,7 @@
   (function() {
     var lastTime, vendor, vendors, _i, _len;
     lastTime = 0;
-    vendors = ['webkit', 'moz'];
+    // vendors = ['webkit', 'moz'];
     // for (_i = 0, _len = vendors.length; _i < _len; _i++) {
     //   vendor = vendors[_i];
     //   window.requestAnimationFrame = window[vendor + 'RequestAnimationFrame'];
