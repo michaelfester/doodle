@@ -16,7 +16,7 @@
     //     break;
     //   }
     // }
-    if (!window.requestAnimationFrame) {
+    // if (!window.requestAnimationFrame) {
       window.requestAnimationFrame = function(callback, element) {
         var currTime, id, timeToCall;
         currTime = new Date().getTime();
@@ -27,12 +27,12 @@
         lastTime = currTime + timeToCall;
         return id;
       };
-    }
-    if (!window.cancelAnimationFrame) {
+    // }
+    // if (!window.cancelAnimationFrame) {
       return window.cancelAnimationFrame = function(id) {
         return clearTimeout(id);
       };
-    }
+    // }
   })();
 
   runAnimationLoop = function(render, data, maxFrameRate) {
