@@ -7,18 +7,18 @@
   (function() {
     var lastTime, vendor, vendors, _i, _len;
     lastTime = 0;
-    // vendors = ['webkit', 'moz'];
-    // for (_i = 0, _len = vendors.length; _i < _len; _i++) {
-    //   vendor = vendors[_i];
-    //   window.requestAnimationFrame = window[vendor + 'RequestAnimationFrame'];
-    //   window.cancelAnimationFrame = window[vendor + 'CancelAnimationFrame'] || window[vendor + 'CancelRequestAnimationFrame'];
-    //   if (window.requestAnimationFrame) {
-    //     break;
-    //   }
-    // }
+    vendors = ['webkit', 'moz'];
+    for (_i = 0, _len = vendors.length; _i < _len; _i++) {
+      vendor = vendors[_i];
+      window.requestAnimationFrame = window[vendor + 'RequestAnimationFrame'];
+      window.cancelAnimationFrame = window[vendor + 'CancelAnimationFrame'] || window[vendor + 'CancelRequestAnimationFrame'];
+      if (window.requestAnimationFrame) {
+        break;
+      }
+    }
     
-    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-    window.cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame || window.webkitCancelAnimationFrame || window.msCancelAnimationFrame || window.cancelRequestAnimationFrame || window.mozCancelRequestAnimationFrame || window.webkitCancelRequestAnimationFrame || window.msCancelRequestAnimationFrame;
+    // window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    // window.cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame || window.webkitCancelAnimationFrame || window.msCancelAnimationFrame || window.cancelRequestAnimationFrame || window.mozCancelRequestAnimationFrame || window.webkitCancelRequestAnimationFrame || window.msCancelRequestAnimationFrame;
 
     if (!window.requestAnimationFrame) {
       window.requestAnimationFrame = function(callback, element) {
