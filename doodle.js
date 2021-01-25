@@ -4,38 +4,40 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __slice = [].slice;
 
-  // (function() {
-  //   var lastTime, vendor, vendors, _i, _len;
-  //   lastTime = 0;
-  //   // vendors = ['webkit', 'moz'];
-  //   // for (_i = 0, _len = vendors.length; _i < _len; _i++) {
-  //   //   vendor = vendors[_i];
-  //   //   window.requestAnimationFrame = requestAnimationFrame;//window[vendor + 'RequestAnimationFrame'];
-  //   //   window.cancelAnimationFrame = cancelAnimationFrame;//window[vendor + 'CancelAnimationFrame'] || window[vendor + 'CancelRequestAnimationFrame'];
-  //   //   if (window.requestAnimationFrame) {
-  //   //     break;
-  //   //   }
-  //   // }
-  //   // window.requestAnimationFrame = requestAnimationFrame;
-  //   // window.cancelAnimationFrame = cancelAnimationFrame;
-  //   // if (!window.requestAnimationFrame) {
-  //   //   window.requestAnimationFrame = function(callback, element) {
-  //   //     var currTime, id, timeToCall;
-  //   //     currTime = new Date().getTime();
-  //   //     timeToCall = Math.max(0, 16 - (currTime - lastTime));
-  //   //     id = window.setTimeout((function() {
-  //   //       return callback(currTime + timeToCall);
-  //   //     }), timeToCall);
-  //   //     lastTime = currTime + timeToCall;
-  //   //     return id;
-  //   //   };
-  //   // }
-  //   // if (!window.cancelAnimationFrame) {
-  //   //   return window.cancelAnimationFrame = function(id) {
-  //   //     return clearTimeout(id);
-  //   //   };
-  //   // }
-  // })();
+  (function() {
+    var lastTime, vendor, vendors, _i, _len;
+    lastTime = 0;
+    // vendors = ['webkit', 'moz'];
+    // for (_i = 0, _len = vendors.length; _i < _len; _i++) {
+    //   vendor = vendors[_i];
+    //   window.requestAnimationFrame = window[vendor + 'RequestAnimationFrame'];
+    //   window.cancelAnimationFrame = window[vendor + 'CancelAnimationFrame'] || window[vendor + 'CancelRequestAnimationFrame'];
+    //   if (window.requestAnimationFrame) {
+    //     break;
+    //   }
+    // }
+    
+    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    window.cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame || window.webkitCancelAnimationFrame || window.msCancelAnimationFrame || window.cancelRequestAnimationFrame || window.mozCancelRequestAnimationFrame || window.webkitCancelRequestAnimationFrame || window.msCancelRequestAnimationFrame;
+
+    if (!window.requestAnimationFrame) {
+      window.requestAnimationFrame = function(callback, element) {
+        var currTime, id, timeToCall;
+        currTime = new Date().getTime();
+        timeToCall = Math.max(0, 16 - (currTime - lastTime));
+        id = window.setTimeout((function() {
+          return callback(currTime + timeToCall);
+        }), timeToCall);
+        lastTime = currTime + timeToCall;
+        return id;
+      };
+    }
+    if (!window.cancelAnimationFrame) {
+      return window.cancelAnimationFrame = function(id) {
+        return clearTimeout(id);
+      };
+    }
+  })();
 
   runAnimationLoop = function(render, data, maxFrameRate) {
     var lastFrame, loop_function, minDelay, running;
